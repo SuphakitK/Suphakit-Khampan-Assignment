@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Assignment.Infrastructure.EF;
 using Assignment.Infrastructure.Repositories;
 using Assignment.Services.Customers;
+using Assignment.Services.Validations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -36,6 +37,7 @@ namespace Assignment
 
             services.AddTransient<ICustomerRepository, CustomerRepository>();
             services.AddTransient<ICustomerService, CustomerService>();
+            services.AddTransient<ICustomerValidation, CustomerValidation>();
 
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
