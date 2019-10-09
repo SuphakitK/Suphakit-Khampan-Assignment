@@ -1,4 +1,5 @@
 ﻿using Assignment.Infrastructure.Repositories;
+using Assignment.Services.Customers;
 using StructureMap;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ namespace Assignment.IoC
         public StructureMapRegistry()
         {
             For<ICustomerRepository>().Use<CustomerRepository>();
+            For<ICustomerService>().Use<CustomerService>();
         }
     }
 }

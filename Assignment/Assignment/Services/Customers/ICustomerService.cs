@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Assignment.Infrastructure.Repositories
+namespace Assignment.Services.Customers
 {
-    public interface ICustomerRepository : IRepository<Customer>
+    public interface ICustomerService
     {
         Task<Customer> GetCustomerById(int customerId);
     }

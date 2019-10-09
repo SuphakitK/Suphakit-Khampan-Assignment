@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Assignment.Infrastructure.EF;
 using Assignment.Infrastructure.Repositories;
 using Assignment.IoC;
+using Assignment.Services.Customers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -34,6 +35,7 @@ namespace Assignment
             services.AddDbContext<AssignmentDbContext>(item => item.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddTransient<ICustomerRepository, CustomerRepository>();
+            services.AddTransient<ICustomerService, CustomerService>();
 
             var container = new Container();
             container.Configure(config =>
