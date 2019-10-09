@@ -1,13 +1,13 @@
-﻿using System;
+﻿using Assignment.Core.DomainModels.Base;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace Assignment.Core.DomainModels.Transactions
 {
-    public class Transaction
+    public class Transaction : EntityBase
     {
-        public int TransactionId { get; set; }
         public DateTimeOffset Date { get; set; }
         public decimal Amount { get; set; }
         public string Currency { get; set; }
