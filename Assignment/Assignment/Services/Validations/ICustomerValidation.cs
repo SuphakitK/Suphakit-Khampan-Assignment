@@ -11,5 +11,6 @@ namespace Assignment.Services.Validations
     {
         string ValidationCustomerId(int customerId);
         string ValidationCustomerEmail(string customerEmail);
+        string ValidationCustomerIdAndEmail(int customerId, string customerEmail);
     }
 }

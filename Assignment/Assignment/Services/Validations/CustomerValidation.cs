@@ -30,5 +30,25 @@ namespace Assignment.Services.Validations
             return "Customer Email is empty";
 
         }
+
+        public string ValidationCustomerIdAndEmail(int customerId, string customerEmail)
+        {
+            var validationCustomerId = ValidationCustomerId(customerId);
+
+            if (!string.IsNullOrEmpty(validationCustomerId))
+            {
+                return validationCustomerId;
+            }
+
+            var validationCustomerEmail = ValidationCustomerEmail(customerEmail);
+
+            if (!string.IsNullOrEmpty(validationCustomerId))
+            {
+                return validationCustomerEmail;
+            }
+
+            return string.Empty;
+        }
+
     }
 }

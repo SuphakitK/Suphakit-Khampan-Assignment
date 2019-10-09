@@ -22,5 +22,10 @@ namespace Assignment.Services.Customers
         {
             return await customerRepository.GetCustomerByEmail(customerEmail);
         }
+
+        public async Task<Customer> GetCustomerByIdAndEmail(int customerId, string customerEmail)
+        {
+            return await customerRepository.GetCustomerByIdAndEmail(customerId, customerEmail);
+        }
     }
 }

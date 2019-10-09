@@ -11,5 +11,6 @@ namespace Assignment.Services.Customers
     {
         Task<Customer> GetCustomerById(int customerId);
         Task<Customer> GetCustomerByEmail(string customerEmail);
+        Task<Customer> GetCustomerByIdAndEmail(int customerId, string customerEmail);
     }
 }
