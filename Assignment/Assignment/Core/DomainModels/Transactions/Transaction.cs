@@ -1,4 +1,5 @@
 ﻿using Assignment.Core.DomainModels.Base;
+using Assignment.Core.DomainModels.Customers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,9 @@ namespace Assignment.Core.DomainModels.Transactions
         public decimal Amount { get; set; }
         public string Currency { get; set; }
         public StatusTransaction Status { get; set; }
+
+        public int CustomerId { get; set; }
+        public Customer Customer { get; set; }
 
     }
 
