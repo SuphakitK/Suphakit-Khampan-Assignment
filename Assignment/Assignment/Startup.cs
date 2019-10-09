@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using Assignment.Infrastructure.EF;
@@ -42,13 +43,29 @@ namespace Assignment
                 c.SwaggerDoc("v1", new Info { Title = "API Controller", Version = "v1" });
             });
         }
-
+        private  DbContextOptions GetOptions(string connectionString)
+        {
+            return SqlServerDbContextOptionsExtensions.UseSqlServer(new DbContextOptionsBuilder(), connectionString).Options;
+        }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+
+                try
+                {
+                    var assignmentDbContext = new AssignmentDbContext(GetOptions(Configuration.GetConnectionString("DefaultConnection")));
+                    if (!assignmentDbContext.Database.CanConnect())
+                    {
+                        assignmentDbContext.Database.Migrate();
+                        assignmentDbContext.SeedingsData();
+                    }
+                }
+                catch (SqlException)
+                {
+                }
             }
             else
             {
