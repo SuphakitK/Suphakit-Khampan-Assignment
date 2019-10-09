@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Assignment.Infrastructure.EF;
 using Assignment.Infrastructure.Repositories;
-using Assignment.IoC;
 using Assignment.Services.Customers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -15,7 +14,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using StructureMap;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace Assignment
@@ -37,13 +35,6 @@ namespace Assignment
 
             services.AddTransient<ICustomerRepository, CustomerRepository>();
             services.AddTransient<ICustomerService, CustomerService>();
-
-            var container = new Container();
-            container.Configure(config =>
-            {
-                config.AddRegistry(new StructureMapRegistry());
-                config.Populate(services);
-            });
 
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
