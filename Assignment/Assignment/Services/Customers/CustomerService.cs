@@ -14,10 +14,13 @@ namespace Assignment.Services.Customers
         {
             this.customerRepository = customerRepository;
         }
-
         public async Task<Customer> GetCustomerById(int customerId)
         {
             return await customerRepository.GetCustomerById(customerId);
+        }
+        public async Task<Customer> GetCustomerByEmail(string customerEmail)
+        {
+            return await customerRepository.GetCustomerByEmail(customerEmail);
         }
     }
 }

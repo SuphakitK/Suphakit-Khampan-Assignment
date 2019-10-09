@@ -10,5 +10,6 @@ namespace Assignment.Services.Validations
     public interface ICustomerValidation
     {
         string ValidationCustomerId(int customerId);
+        string ValidationCustomerEmail(string customerEmail);
     }
 }

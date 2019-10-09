@@ -20,5 +20,9 @@ namespace Assignment.Infrastructure.Repositories
         {
             return await assignmentDbContext.Customers.Include(c => c.Transactions).SingleOrDefaultAsync(c => c.Id == customerId);
         }
+        public async Task<Customer> GetCustomerByEmail(string customerEmail)
+        {
+            return await assignmentDbContext.Customers.Include(c => c.Transactions).SingleOrDefaultAsync(c => c.Email == customerEmail);
+        }
     }
 }

@@ -43,5 +43,26 @@ namespace Assignment.Controllers
 
             return NotFound();
         }
+
+        [HttpGet("CustomerEmail")]
+        public async Task<ActionResult<Result<CustomerDTO>>> GetCustomerByEmail(string customerEmail)
+        {
+            var validationResult = customerValidation.ValidationCustomerEmail(customerEmail);
+            if (!string.IsNullOrEmpty(validationResult))
+            {
+                var errorResult = Result<CustomerDTO>.StatusFailed(validationResult);
+                return BadRequest(errorResult);
+            }
+
+            var customer = await customerService.GetCustomerByEmail(customerEmail);
+            if (customer != null)
+            {
+                var customerDTO = CustomerDTO.ToCustomerDTO(customer);
+                var customerResult = Result<CustomerDTO>.StatusComplete(customerDTO);
+                return customerResult;
+            }
+
+            return NotFound();
+        }
     }
 }

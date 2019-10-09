@@ -10,5 +10,6 @@ namespace Assignment.Services.Customers
     public interface ICustomerService : IService<Customer>
     {
         Task<Customer> GetCustomerById(int customerId);
+        Task<Customer> GetCustomerByEmail(string customerEmail);
     }
 }

@@ -9,5 +9,6 @@ namespace Assignment.Infrastructure.Repositories
     public interface ICustomerRepository : IRepository<Customer>
     {
         Task<Customer> GetCustomerById(int customerId);
+        Task<Customer> GetCustomerByEmail(string customerEmail);
     }
 }
