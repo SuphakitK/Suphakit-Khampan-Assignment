@@ -10,7 +10,7 @@ namespace Assignment.Services.Validations
     {
         public string ValidationCustomerId(int customerId)
         {
-            return customerId < 0 ? "Invalid Customer ID" : string.Empty;
+            return customerId <= 0 ? "Invalid Customer ID" : string.Empty;
         }
         public string ValidationCustomerEmail(string customerEmail)
         {

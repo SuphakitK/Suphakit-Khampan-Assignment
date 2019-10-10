@@ -17,5 +17,30 @@ namespace Assignment.Test.UnitTests.Validations
             //Assert
             Assert.True(string.IsNullOrEmpty(result));
         }
+
+        [Fact]
+        public void GetCustomerById_Should_Fail_When_InputZeroNumber()
+        {
+            //Arrange
+            var customerId = 0;
+            //Act
+            var validationService = new CustomerValidation();
+            var result = validationService.ValidationCustomerId(customerId);
+            //Assert
+            Assert.False(string.IsNullOrEmpty(result));
+        }
+
+        [Fact]
+
+        public void GetCustomerById_Should_Fail_When_InputNegativeInteger()
+        {
+            //Arrange
+            var customerId = -2;
+            //Act
+            var validationService = new CustomerValidation();
+            var result = validationService.ValidationCustomerId(customerId);
+            //Assert
+            Assert.False(string.IsNullOrEmpty(result));
+        }
     }
 }
