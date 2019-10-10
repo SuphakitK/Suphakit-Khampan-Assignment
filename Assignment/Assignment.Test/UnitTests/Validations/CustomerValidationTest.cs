@@ -59,7 +59,7 @@ namespace Assignment.Test.UnitTests.Validations
         public void GetCustomerByEmail_Should_Fail_When_InputEmptyEmail()
         {
             //Arrange
-            var customerEmail = "";
+            var customerEmail = string.Empty;
             //Act
             var validationService = new CustomerValidation();
             var result = validationService.ValidationCustomerEmail(customerEmail);
@@ -76,6 +76,124 @@ namespace Assignment.Test.UnitTests.Validations
             //Act
             var validationService = new CustomerValidation();
             var result = validationService.ValidationCustomerEmail(customerEmail);
+            //Assert
+            Assert.False(string.IsNullOrEmpty(result));
+        }
+
+        [Fact]
+        public void GetCustomerByIdAndEmail_Should_Success_When_InputPositiveInteger_RightFormatEmail()
+        {
+            //Arrange
+            var customerId = 10;
+            var customerEmail = "gabaysy@moixsy.com";
+            //Act
+            var validationService = new CustomerValidation();
+            var result = validationService.ValidationCustomerIdAndEmail(customerId, customerEmail);
+            //Assert
+            Assert.True(string.IsNullOrEmpty(result));
+        }
+
+        [Fact]
+        public void GetCustomerByIdAndEmail_Should_Fail_When_InputPositiveInteger_EmptyEmail()
+        {
+            //Arrange
+            var customerId = 8;
+            var customerEmail = string.Empty;
+            //Act
+            var validationService = new CustomerValidation();
+            var result = validationService.ValidationCustomerIdAndEmail(customerId, customerEmail);
+            //Assert
+            Assert.False(string.IsNullOrEmpty(result));
+        }
+
+        [Fact]
+
+        public void GetCustomerByIdAndEmail_Should_Fail_When_InputPositiveInteger_WorngFotmatEmail()
+        {
+            //Arrange
+            var customerId = 6;
+            var customerEmail = "rosesyJes.com";
+            //Act
+            var validationService = new CustomerValidation();
+            var result = validationService.ValidationCustomerIdAndEmail(customerId, customerEmail);
+            //Assert
+            Assert.False(string.IsNullOrEmpty(result));
+        }
+
+        [Fact]
+        public void GetCustomerByIdAndEmail_Should_Fail_When_InputZeroNumber_RightFormatEmail()
+        {
+            //Arrange
+            var customerId = 0;
+            var customerEmail = "fagvycoll@cheese.com";
+            //Act
+            var validationService = new CustomerValidation();
+            var result = validationService.ValidationCustomerIdAndEmail(customerId, customerEmail);
+            //Assert
+            Assert.False(string.IsNullOrEmpty(result));
+        }
+
+        [Fact]
+        public void GetCustomerByIdAndEmail_Should_Fail_When_InputZeroNumber_EmptyEmail()
+        {
+            //Arrange
+            var customerId = 0;
+            var customerEmail = string.Empty;
+            //Act
+            var validationService = new CustomerValidation();
+            var result = validationService.ValidationCustomerIdAndEmail(customerId, customerEmail);
+            //Assert
+            Assert.False(string.IsNullOrEmpty(result));
+        }
+
+        [Fact]
+        public void GetCustomerByIdAndEmail_Should_Fail_When_InputZeroNumber_WorngFotmatEmail()
+        {
+            //Arrange
+            var customerId = 0;
+            var customerEmail = "b_basketb.com";
+            //Act
+            var validationService = new CustomerValidation();
+            var result = validationService.ValidationCustomerIdAndEmail(customerId, customerEmail);
+            //Assert
+            Assert.False(string.IsNullOrEmpty(result));
+        }
+
+        [Fact]
+        public void GetCustomerByIdAndEmail_Should_Fail_When_InputNegativeInteger_RightFormatEmail()
+        {
+            //Arrange
+            var customerId = -36;
+            var customerEmail = "musicaly@central";
+            //Act
+            var validationService = new CustomerValidation();
+            var result = validationService.ValidationCustomerIdAndEmail(customerId, customerEmail);
+            //Assert
+            Assert.False(string.IsNullOrEmpty(result));
+        }
+
+        [Fact]
+        public void GetCustomerByIdAndEmail_Should_Fail_When_InputNegativeInteger_EmptyEmail()
+        {
+            //Arrange
+            var customerId = -64;
+            var customerEmail = string.Empty;
+            //Act
+            var validationService = new CustomerValidation();
+            var result = validationService.ValidationCustomerIdAndEmail(customerId, customerEmail);
+            //Assert
+            Assert.False(string.IsNullOrEmpty(result));
+        }
+
+        [Fact]
+        public void GetCustomerByIdAndEmail_Should_Fail_When_InputNegativeInteger_WrongFormatEmail()
+        {
+            //Arrange
+            var customerId = -52;
+            var customerEmail = "musicaly central";
+            //Act
+            var validationService = new CustomerValidation();
+            var result = validationService.ValidationCustomerIdAndEmail(customerId, customerEmail);
             //Assert
             Assert.False(string.IsNullOrEmpty(result));
         }
