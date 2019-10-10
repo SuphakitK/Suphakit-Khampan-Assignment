@@ -13,10 +13,10 @@ namespace Assignment.Infrastructure.EF.Mappings
         {
             var entity = modelBuilder.Entity<Customer>();
             entity.ToTable("Customer");
-            entity.Property(c => c.Id).ValueGeneratedOnAdd();
-            entity.Property(c => c.Name);
-            entity.Property(c => c.Email);
-            entity.Property(c => c.Phone);
+            entity.Property(c => c.Id).ValueGeneratedOnAdd().HasMaxLength(10);
+            entity.Property(c => c.Name).HasMaxLength(30);
+            entity.Property(c => c.Email).HasMaxLength(25);
+            entity.Property(c => c.Phone).HasMaxLength(10);
             entity.Property(c => c.CreateDate);
             entity.Property(c => c.UpdateDate);
             entity.HasMany(c => c.Transactions).WithOne(c => c.Customer).HasForeignKey(c => c.CustomerId);
