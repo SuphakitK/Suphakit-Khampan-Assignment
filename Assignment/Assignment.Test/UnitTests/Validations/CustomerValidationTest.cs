@@ -42,5 +42,42 @@ namespace Assignment.Test.UnitTests.Validations
             //Assert
             Assert.False(string.IsNullOrEmpty(result));
         }
+
+        [Fact]
+        public void GetCustomerByEmail_Should_Success_When_InputRightFormatEmail()
+        {
+            //Arrange
+            var customerEmail = "abcde@maosy.com";
+            //Act
+            var validationService = new CustomerValidation();
+            var result = validationService.ValidationCustomerEmail(customerEmail);
+            //Assert
+            Assert.True(string.IsNullOrEmpty(result));
+        }
+
+        [Fact]
+        public void GetCustomerByEmail_Should_Fail_When_InputEmptyEmail()
+        {
+            //Arrange
+            var customerEmail = "";
+            //Act
+            var validationService = new CustomerValidation();
+            var result = validationService.ValidationCustomerEmail(customerEmail);
+            //Assert
+            Assert.False(string.IsNullOrEmpty(result));
+        }
+
+        [Fact]
+
+        public void GetCustomerByEmail_Should_Fail_When_InputWorngFotmatEmail()
+        {
+            //Arrange
+            var customerEmail = "asfgvzxc.com";
+            //Act
+            var validationService = new CustomerValidation();
+            var result = validationService.ValidationCustomerEmail(customerEmail);
+            //Assert
+            Assert.False(string.IsNullOrEmpty(result));
+        }
     }
 }
