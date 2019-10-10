@@ -10,7 +10,7 @@ namespace Assignment.Services.Validations
     {
         public string ValidationCustomerId(int customerId)
         {
-            return customerId <= 0 ? "Invalid Customer ID" : string.Empty;
+            return customerId < 0 ? "Invalid Customer ID" : string.Empty;
         }
         public string ValidationCustomerEmail(string customerEmail)
         {
@@ -27,12 +27,16 @@ namespace Assignment.Services.Validations
                 }
             }
 
-            return "noInquiryErrorMsg";
+            return "Customer Email is empty";
 
         }
 
         public string ValidationCustomerIdAndEmail(int customerId, string customerEmail)
         {
+            if (customerId == 0 && string.IsNullOrEmpty(customerEmail))
+            {
+                return "No inquiry criteria";
+            }
             var validationCustomerId = ValidationCustomerId(customerId);
 
             if (!string.IsNullOrEmpty(validationCustomerId))
@@ -42,7 +46,7 @@ namespace Assignment.Services.Validations
 
             var validationCustomerEmail = ValidationCustomerEmail(customerEmail);
 
-            if (!string.IsNullOrEmpty(validationCustomerId))
+            if (!string.IsNullOrEmpty(validationCustomerEmail))
             {
                 return validationCustomerEmail;
             }
