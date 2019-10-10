@@ -27,7 +27,7 @@ namespace Assignment.Services.Validations
                 }
             }
 
-            return "Customer Email is empty";
+            return "noInquiryErrorMsg";
 
         }
 
