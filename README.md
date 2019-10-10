@@ -1,1 +1,1 @@
-# Suphakit-Khampan-Assignment
+Assignment
