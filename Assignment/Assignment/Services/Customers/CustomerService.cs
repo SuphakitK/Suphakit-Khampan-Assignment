@@ -16,16 +16,24 @@ namespace Assignment.Services.Customers
         }
         public async Task<Customer> GetCustomerById(int customerId)
         {
-            return await customerRepository.GetCustomerById(customerId);
+            var customer = await customerRepository.GetCustomerById(customerId);
+            if (customer != null)
+                customer.Transactions = customer.Transactions.OrderByDescending(c => c.Date).Take(5).ToList();
+            return customer;
         }
         public async Task<Customer> GetCustomerByEmail(string customerEmail)
         {
-            return await customerRepository.GetCustomerByEmail(customerEmail);
+            var customer = await customerRepository.GetCustomerByEmail(customerEmail);
+            if (customer != null)
+                customer.Transactions = customer.Transactions.OrderByDescending(c => c.Date).Take(5).ToList();
+            return customer;
         }
-
         public async Task<Customer> GetCustomerByIdAndEmail(int customerId, string customerEmail)
         {
-            return await customerRepository.GetCustomerByIdAndEmail(customerId, customerEmail);
+            var customer = await customerRepository.GetCustomerByIdAndEmail(customerId, customerEmail);
+            if (customer != null)
+                customer.Transactions = customer.Transactions.OrderByDescending(c => c.Date).Take(5).ToList();
+            return customer;
         }
     }
 }
