@@ -19,7 +19,9 @@ namespace Assignment.Infrastructure.EF.Seedings
                 Status = StatusTransaction.Success,
                 CustomerId = customer.First().Id,
                 CreateDate = DateTime.Now,
-                UpdateDate = DateTime.Now
+                UpdateDate = DateTime.Now,
+                Date = DateTime.Now
+                
             };
 
             var transaction2OfCustomer1 = new Transaction()
@@ -29,7 +31,8 @@ namespace Assignment.Infrastructure.EF.Seedings
                 Status = StatusTransaction.Canceled,
                 CustomerId = customer.First().Id,
                 CreateDate = DateTime.Now,
-                UpdateDate = DateTime.Now
+                UpdateDate = DateTime.Now,
+                Date = DateTime.Now
             };
 
             var transaction3OfCustomer1 = new Transaction()
@@ -39,7 +42,8 @@ namespace Assignment.Infrastructure.EF.Seedings
                 Status = StatusTransaction.Failed,
                 CustomerId = customer.First().Id,
                 CreateDate = DateTime.Now,
-                UpdateDate = DateTime.Now
+                UpdateDate = DateTime.Now,
+                Date = DateTime.Now
             };
 
             var transaction1OfCustomer2 = new Transaction()
@@ -49,7 +53,8 @@ namespace Assignment.Infrastructure.EF.Seedings
                 Status = StatusTransaction.Success,
                 CustomerId = customer.Last().Id,
                 CreateDate = DateTime.Now,
-                UpdateDate = DateTime.Now
+                UpdateDate = DateTime.Now,
+                Date = DateTime.Now
             };
 
             var transaction2OfCustomer2 = new Transaction()
@@ -59,7 +64,8 @@ namespace Assignment.Infrastructure.EF.Seedings
                 Status = StatusTransaction.Canceled,
                 CustomerId = customer.Last().Id,
                 CreateDate = DateTime.Now,
-                UpdateDate = DateTime.Now
+                UpdateDate = DateTime.Now,
+                Date = DateTime.Now
             };
 
             var transaction3OfCustomer2 = new Transaction()
@@ -69,7 +75,8 @@ namespace Assignment.Infrastructure.EF.Seedings
                 Status = StatusTransaction.Failed,
                 CustomerId = customer.Last().Id,
                 CreateDate = DateTime.Now,
-                UpdateDate = DateTime.Now
+                UpdateDate = DateTime.Now,
+                Date = DateTime.Now
             };
 
             assignmentDbContext.Add(transaction1OfCustomer1);
